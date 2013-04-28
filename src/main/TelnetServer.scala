@@ -53,10 +53,6 @@ object TelnetServer {
   // The welcome message was sent on connection
   val welcome =
     """|Welcome to database!
-|----------------
-| Feel free to change the login screen anyway you'd like
-| You could put instructions here
-|
 |> """.stripMargin
   // Simple method to convert from ByteString messages to
   // the Strings we know we're going to get

@@ -23,14 +23,14 @@ class Grammar extends JavaTokenParsers {
   def insert: Parser[Command] = "(?i)insert".r ~ '(' ~ value_list ~ ')'~"(?i)into\\s+".r ~ table_name ^^  {case _~_~values~_~_~name => Insert(values, name.toString)}
   def update: Parser[Command] = "(?i)update\\s+".r ~ table_name ~ "(?i)set\\s+".r ~ field_name ~ "=" ~ value ~ opt(where) ^^ {case _~name~_~fieldName~_~value~where => Update(name, fieldName, value, where)}
   
-  def query_statement: Parser[Query] = selection// | projection | join | intersection | union | minus | sort
+  def query_statement: Parser[Query] = selection | projection | join | intersection | union | minus | sort
   def selection: Parser[Query] = "(?i)select\\s+".r ~ query_list ~ opt(where) ^^ {case _~qList~where => Select(qList, where)}
-//  def projection: Parser[Query] = "(?i)project\\s+".r ~ query_list ~ "(?i)over\\s+".r ~ field_list ^^ {case _~qList~_~fList => Project(qList, fList)}
-//  def join: Parser[Query] = "(?i)join\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Join(qList1, qList2)}
-//  def intersection: Parser[Query] = "(?i)intersect\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Intersect(qList1, qList2)}
-//  def union: Parser[Query] = "(?i)union\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Union(qList1, qList2)}
-//  def minus: Parser[Query] = "(?i)minus\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Minus(qList1, qList2)}
-//  def sort: Parser[Query] = "(?i)order\\s+".r ~ query_list ~ "(?i)by\\s+".r ~ field_name ^^ { case _~qList1~_~fieldName => Sort(qList1, fieldName)}
+  def projection: Parser[Query] = "(?i)project\\s+".r ~ query_list ~ "(?i)over\\s+".r ~ field_list ^^ {case _~qList~_~fList => Project(qList, fList)}
+  def join: Parser[Query] = "(?i)join\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Join(qList1, qList2)}
+  def intersection: Parser[Query] = "(?i)intersect\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Intersect(qList1, qList2)}
+  def union: Parser[Query] = "(?i)union\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Union(qList1, qList2)}
+  def minus: Parser[Query] = "(?i)minus\\s+".r ~ query_list ~ "(?i)and\\s+".r ~ query_list ^^ { case _~qList1~_~qList2 => Minus(qList1, qList2)}
+  def sort: Parser[Query] = "(?i)order\\s+".r ~ query_list ~ "(?i)by\\s+".r ~ field_name ^^ { case _~qList1~_~fieldName => Sort(qList1, fieldName)}
   def transaction_statement: Parser[Any] = begin | end | pause
   def begin: Parser[Any] = "(?i)begin".r
   def end: Parser[Any] = "(?i)end".r
@@ -89,13 +89,12 @@ object ParseExpr extends Grammar {
 	if(p.successful) println("Valid command.")
 	else println("Invalid command.")
 	p match {
-	  case Failure(_,_) => println("Failure.")
+	  case Failure(_,_) => {println("Failure.\n>")}
 	  case Success(c,_) => ts ! c//c.execute() //match {
 //	    case t: Table => println(t)
 //	    case Unit => println(p)
 //	  }
 	}
-
 	//println(p)
   }
   

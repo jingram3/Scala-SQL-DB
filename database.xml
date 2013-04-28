@@ -67,5 +67,28 @@
 		  </column>
 	</row>
 	  </values> 
+	</table><table>
+	  <tablename>
+	  	c
+	  </tablename>
+	  <field>
+	  		<fieldname>
+		  		cc
+	  		</fieldname>
+	  		<fieldtype>
+		  		integer
+	  		</fieldtype>
+		  </field>
+	  <values>
+	  	<row>
+		<column name="cc">
+			8
+		  </column>
+	</row><row>
+		<column name="cc">
+			1
+		  </column>
+	</row>
+	  </values> 
 	</table>
 	</database>
