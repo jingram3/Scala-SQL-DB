@@ -1,0 +1,71 @@
+<database>
+	  <table>
+	  <tablename>
+	  	b
+	  </tablename>
+	  <field>
+	  		<fieldname>
+		  		bb
+	  		</fieldname>
+	  		<fieldtype>
+		  		integer
+	  		</fieldtype>
+		  </field><field>
+	  		<fieldname>
+		  		bc
+	  		</fieldname>
+	  		<fieldtype>
+		  		varchar
+	  		</fieldtype>
+		  </field><field>
+	  		<fieldname>
+		  		bd
+	  		</fieldname>
+	  		<fieldtype>
+		  		boolean
+	  		</fieldtype>
+		  </field>
+	  <values>
+	  	<row>
+		<column name="bb">
+			3
+		  </column><column name="bc">
+			'joe'
+		  </column><column name="bd">
+			true
+		  </column>
+	</row><row>
+		<column name="bb">
+			6
+		  </column><column name="bc">
+			'asdf'
+		  </column><column name="bd">
+			false
+		  </column>
+	</row>
+	  </values> 
+	</table><table>
+	  <tablename>
+	  	a
+	  </tablename>
+	  <field>
+	  		<fieldname>
+		  		age
+	  		</fieldname>
+	  		<fieldtype>
+		  		integer
+	  		</fieldtype>
+		  </field>
+	  <values>
+	  	<row>
+		<column name="age">
+			1
+		  </column>
+	</row><row>
+		<column name="age">
+			5
+		  </column>
+	</row>
+	  </values> 
+	</table>
+	</database>
